@@ -1,0 +1,58 @@
+/* Put your CSS here */
+.ember-application {
+    margin: 20px;
+}
+body {
+  background-color: #464646;
+}
+.posts-bar, .post-container {
+  display: inline-block;
+}
+.panel-body {
+  background-color: #DADADA;
+}
+.panel {
+  border-width: 0;
+}
+.panel-warning {
+  margin-left: 20px;
+}
+.panel-success>.panel-heading  {
+  background-color: #D76817;
+  border-color: #D76817;
+  color: #DADADA;
+}
+
+.panel-default>.panel-heading  {
+  background-color: #00A6B6;
+  border-color: #00A6B6;
+  color: #DADADA;
+}
+.panel-warning>.panel-heading  {
+  background-color: #00D2A5;
+  border-color: #00D2A5;
+  color: #DADADA;
+}
+.posts-bar {
+  vertical-align: top;
+}
+
+.posts-bar li {
+  list-style-type: none;
+}
+.post-title {
+  color: #DADADA;
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+.panel-title {
+  display: inline-block;
+}
+.add-comment-btn {
+  float: right;
+  margin-top: -4px;
+  background-color: #DADADA;
+}
+.edit-icon {
+  margin-right: 2px;
+}
