@@ -32,7 +32,7 @@
         <div class="panel-body">
           {{#each post in controller }}
             <li>
-              {{#link-to "posts.post" post}}
+              {{#link-to "post" post}}
                 {{post.title}}
               {{/link-to}}
             </li>
@@ -42,18 +42,20 @@
     </aside>
   </script>
 
-  <script type="text/x-handlebars" id="posts/post">
+  <script type="text/x-handlebars" id="post">
     <article class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">{{title}} by {{from}}</h3>
         <button type="button" class="btn btn-default btn-sm add-comment-btn">
-          <span class="edit-icon glyphicon glyphicon-pencil"></span> Comment
+          <span class="edit-icon glyphicon glyphicon-pencil"></span>
+          {{#link-to "post.edit"}} Comment {{/link-to}}
         </button>
       </div>
       <div class="panel-body">
         {{postContent}}
       </div>
     </article>
+    {{outlet}}
     {{#each answers}}
       <article class="panel panel-warning">
         <div class="panel-heading">
@@ -64,7 +66,15 @@
         </div>
       </article>
     {{/each}}
-    {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" id="post/edit">
+    <article class="panel panel-warning">
+        <div class="panel-body">
+          <input type="text" class="form-control" placeholder="Username">
+          <textarea class="form-control add-comment-field" placeholder="Comment"></textarea>
+        </div>
+    </article>
   </script>
 
 

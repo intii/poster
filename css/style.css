@@ -2,6 +2,13 @@
 .ember-application {
     margin: 20px;
 }
+a {
+  color: #464646;
+}
+a:hover{
+  text-decoration: none;
+  color: #00A6B6;
+}
 body {
   background-color: #464646;
 }
@@ -55,4 +62,7 @@ body {
 }
 .edit-icon {
   margin-right: 2px;
+}
+.add-comment-field {
+  margin-top: 5px;
 }
