@@ -28,6 +28,10 @@
       <aside class="panel panel-success">
         <div class="panel-heading">
           <h3 class="panel-title">Other posts</h3>
+           <button type="button" class="btn btn-default btn-sm add-comment-btn">
+          <span class="edit-icon glyphicon glyphicon-pencil"></span>
+          {{#link-to "posts.add"}} New Post {{/link-to}}
+        </button>
         </div>
         <div class="panel-body">
           {{#each post in controller }}
@@ -45,34 +49,42 @@
   <script type="text/x-handlebars" id="post">
     <article class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">{{title}} by {{from}}</h3>
+        <h3 class="panel-title">{{title}} by {{username}}</h3>
         <button type="button" class="btn btn-default btn-sm add-comment-btn">
           <span class="edit-icon glyphicon glyphicon-pencil"></span>
-          {{#link-to "post.edit"}} Comment {{/link-to}}
+          {{#link-to "post.add"}} Comment {{/link-to}}
         </button>
       </div>
       <div class="panel-body">
-        {{postContent}}
+        {{text}}
       </div>
     </article>
     {{outlet}}
-    {{#each answers}}
+  </script>
+
+  <script type="text/x-handlebars" id="post/comments">
+    {{#each}}
       <article class="panel panel-warning">
         <div class="panel-heading">
-          <h3 class="panel-title">{{from}}</h3>
+          <h3 class="panel-title">{{username}}</h3>
         </div>
         <div class="panel-body">
-          {{answerText}}
+          {{text}}
         </div>
       </article>
     {{/each}}
   </script>
 
-  <script type="text/x-handlebars" id="post/edit">
+  <script type="text/x-handlebars" id="posts/add">
     <article class="panel panel-warning">
         <div class="panel-body">
-          <input type="text" class="form-control" placeholder="Username">
-          <textarea class="form-control add-comment-field" placeholder="Comment"></textarea>
+          {{input value=name class="form-control" placeholder="Username"}}
+          {{input value=title class="form-control" placeholder="Title"}}
+          {{textarea value=text class="form-control" placeholder="Content"}}
+          <button type="button" class="btn btn-default btn-md" {{action "save"}}>
+            <span class="edit-icon glyphicon glyphicon-ok"></span>
+            Comment
+          </button>
         </div>
     </article>
   </script>
@@ -86,6 +98,7 @@
 
   <script src="js/app.js"></script>
   <script src="js/models/store.js"></script>
+   <script src="js/controllers/controllers.js"></script>
   <script src="js/router.js"></script>
   <script src="js/routes/routes.js"></script>
 

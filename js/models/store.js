@@ -1,62 +1,54 @@
-App.ApplicationAdapter = DS.FixtureAdapter;
+// App.ApplicationAdapter = DS.FixtureAdapter;
 
 App.Post = DS.Model.extend({
-  from      : DS.attr(),
+  username      : DS.attr(),
   title     : DS.attr(),
-  postContent   : DS.attr(),
+  text   : DS.attr(),
   date      : DS.attr(),
-  answers   : DS.attr()
 });
 
-App.Post.FIXTURES = [{
-  id:1,
-  from: 'inti',
-  title: 'Question1',
-  postContent: 'I have a question about emberJS1',
-  date: 'today',
-  answers: [
-    {
-      from: 'UserX',
-      answerText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, laudantium, ipsam, odio, dolores repellat iure ratione dolorum accusamus ad corporis animi illo eum illum sit iste. Eveniet nobis modi odit.'
-    }
-  ]
-},
-{
-  id:2,
-  from: 'inti',
-  title: 'Question2',
-  postContent: 'I have a question about emberJS2',
-  date: 'today',
-  answers: [
-    {
-      from: 'UserX',
-      answerText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, dignissimos, quos, vitae, nulla facere voluptatum quisquam officia esse neque praesentium voluptate quo nostrum dolorem quibusdam blanditiis nam labore accusantium enim!'
-    },
-     {
-      from: 'UserX',
-      answerText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, dolorum, nostrum, at, magnam minus quisquam dicta excepturi quae sint officia aperiam illo accusamus laborum! Cum, fuga architecto nihil voluptas excepturi.'
-    }
-  ]
-},
-{
-  id:3,
-  from: 'inti',
-  title: 'Question3',
-  postContent: 'I have a question about emberJS3',
-  date: 'today',
-  answers: [
-    {
-      from: 'UserX',
-      answerText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, dolorum, nostrum, at, magnam minus quisquam dicta excepturi quae sint officia aperiam illo accusamus laborum! Cum, fuga architecto nihil voluptas excepturi.'
-    },
-     {
-      from: 'UserX',
-      answerText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, dolorum, nostrum, at, magnam minus quisquam dicta excepturi quae sint officia aperiam illo accusamus laborum! Cum, fuga architecto nihil voluptas excepturi.'
-    },
-     {
-      from: 'UserX',
-      answerText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, dolorum, nostrum, at, magnam minus quisquam dicta excepturi quae sint officia aperiam illo accusamus laborum! Cum, fuga architecto nihil voluptas excepturi.'
-    }
-  ]
-}
-];
+App.Comment = DS.Model.extend({
+  post: DS.belongsTo('post'),
+  username: DS.attr(),
+  text: DS.attr()
+});
+
+// App.Comment.FIXTURES = [{
+//   id: 1,
+//   username: 'UserX',
+//   text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, laudantium, ipsam, odio, dolores repellat iure ratione dolorum accusamus ad corporis animi illo eum illum sit iste. Eveniet nobis modi odit.'
+// }, {
+//   id: 2,
+//   username: 'UserX',
+//   text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, laudantium, ipsam, odio, dolores repellat iure ratione dolorum accusamus ad corporis animi illo eum illum sit iste. Eveniet nobis modi odit.'
+// }
+// ];
+
+// App.Post.FIXTURES = [{
+//   id:1,
+//   username: 'inti',
+//   title: 'Question1',
+//   text: 'I have a question about emberJS1',
+//   date: 'today'
+// },
+// {
+//   id:2,
+//   username: 'inti',
+//   title: 'Question2',
+//   text: 'I have a question about emberJS2',
+//   date: 'today'
+// },
+// {
+//   id:3,
+//   username: 'inti',
+//   title: 'Question3',
+//   text: 'I have a question about emberJS3',
+//   date: 'today'
+// }
+// ];
+
+// App.ApplicationAdapter = DS.RESTAdapter;
+
+DS.RESTAdapter.reopen({
+  host: 'http://192.168.0.94:3000/api'
+});
